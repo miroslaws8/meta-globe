@@ -3,7 +3,7 @@
 import Globe from "react-globe.gl";
 import ModalEventBus, {ModalEvent} from "@/events/modalEventBus";
 import MintPolygonDialog from "@/components/modals/MintPolygonDialog";
-import {darkenColor, darkenHexColor, darkenRgbString} from "@/lib/utils";
+import {darkenRgbString} from "@/lib/utils";
 import {MintCountRecord} from "@/database/token";
 
 interface GlobeBlockProps {

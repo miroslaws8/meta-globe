@@ -1,20 +1,24 @@
 "use client"
 
 import ModalContext from "@/context/modalContext";
-import {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ModalEventBus, {ModalEvent} from "@/events/modalEventBus";
 
 export interface ModalProps {
   show: boolean;
-  openModal: (component: any, props: any) => void;
+  openModal: (component: React.ComponentType<any>, props: any) => void;
   closeModal: () => void;
 }
 
-export const ModalProvider = ({ children }: {children: any}) => {
-  const [modals, setModals] = useState([]);
+type ModalType = {
+  component: React.ComponentType<any>;
+  props: any;
+};
 
-  const openModal = (component: any, props = {}) => {
-    // @ts-ignore
+export const ModalProvider = ({ children }: {children: React.ReactNode}) => {
+  const [modals , setModals] = useState<ModalType[]>([]);
+
+  const openModal = (component: React.ComponentType<any>, props = {}) => {
     setModals([...modals, { component, props }]);
   };
 
