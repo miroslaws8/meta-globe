@@ -38,17 +38,17 @@ const MintPolygonDialog = ({show, openModal, closeModal, ...props}: ModalProps) 
   // @ts-ignore
   const {data: fee}: {data: BigInt} = useReadContract({
     abi: ERC_721_ABI,
-    address: process.env.NEXT_CONTRACT_ADDRESS as Address,
+    address: '0x994559A238eb4387397352ebbd2d01fbf9E352c7',
     functionName: 'fee',
   });
 
   const handleMint = async () => {
     const payload: any = {
       abi: ERC_721_ABI,
-      address: process.env.NEXT_CONTRACT_ADDRESS,
+      address: '0x994559A238eb4387397352ebbd2d01fbf9E352c7',
       functionName: 'mint',
       // @ts-ignore
-      value: BigInt(fee * quantity),
+      value: BigInt(fee) * BigInt(quantity),
       args: [
         quantity,
         'US'
@@ -108,7 +108,7 @@ const MintPolygonDialog = ({show, openModal, closeModal, ...props}: ModalProps) 
 
         <div className="">
           <div className="flex gap-2">
-            <Input type="number" placeholder="Quantity" value={quantity} onInput={(e) => setQuantity(+e.currentTarget.value)} />
+            <Input type="number" placeholder="Quantity" defaultValue={quantity} onInput={(e) => setQuantity(+e.currentTarget.value)} />
 
             { address === undefined
               ? <Button onClick={() => open()}>Connect wallet</Button>
