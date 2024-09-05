@@ -48,7 +48,7 @@ const MintPolygonDialog = ({show, openModal, closeModal, ...props}: ModalProps) 
       address: process.env.NEXT_CONTRACT_ADDRESS,
       functionName: 'mint',
       // @ts-ignore
-      value: fee * BigInt(5),
+      value: BigInt(fee * quantity),
       args: [
         quantity,
         'US'
