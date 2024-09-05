@@ -1,0 +1,1 @@
+ALTER TABLE `tokens` ADD `address` varchar(255) NOT NULL;
